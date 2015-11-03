@@ -5,7 +5,6 @@
 using namespace std;
 
 int main() {
-    Generator generator(10, 1, 5);
-    cout << generator.getA();
+    Generator generator(3, 1, 5);
     return 0;
 }

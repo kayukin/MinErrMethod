@@ -9,6 +9,8 @@
       <sourceFolder url="file://$MODULE_DIR$/Matrix.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/MinimalErrorsMethod.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/MinimalErrorsMethod.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Vector.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Vector.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
