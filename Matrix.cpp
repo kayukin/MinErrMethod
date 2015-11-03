@@ -1,5 +1,6 @@
 #include <string.h>
 #include <ostream>
+#include <cmath>
 #include "Matrix.h"
 
 Matrix::Matrix(size_t N) {
@@ -93,4 +94,47 @@ double &Matrix::operator()(size_t i, size_t j) {
 
 double Matrix::operator()(size_t i, size_t j) const {
     return matr[i][j];
+}
+
+size_t Matrix::getSize() const {
+    return size;
+}
+
+Matrix Matrix::Invert() {
+    //void Mult_On_Inv_Matr_For_Sopr(int n,MyType**&p,MyType** B)
+    Vector d(size);
+    /*for (int i = 0; i < size; i++) {
+        for (int k = 0; k < size; k++) {
+            double x = 0;
+            for (int j = 0; j < size; j++) x = x + p[i][j] * B[k][j];
+            d[k] = MyType(x);
+        }
+        for (int j = 0; j < n; j++) p[i][j] = d[j];*/
+//}
+// delete[]d;
+}
+
+Matrix Matrix::Sopr() {
+    Matrix B(size);
+    for (int i = 0; i < size - 1; i++)
+        B(0, i) = 1 / sqrt((i + 1) * (i + 2));
+    //B(0, i) = 1 / sqrt(size);
+    for (int i = 1; i < size - 1; i++) {
+        B(i, i - 1) = -sqrt(i) / sqrt(i + 1);
+        for (int j = i; j < size - 1; j++)
+            B(i, j) = 1 / sqrt((j + 1) * (j + 2));
+        //B(i, j) = 1 / sqrt(size);
+    }
+    B(size - 1, size - 2) = -1 / sqrt(size * (size - 1));
+    B(size - 1, size - 1) = 1 / sqrt(size);
+    return B;
+}
+
+Vector Matrix::operator*(const Vector &B) const {
+    Vector result(getSize());
+    for (size_t i = 0; i < result.getSize(); i++) {
+        for (size_t j = 0; j < result.getSize(); j++) {
+            result(i) += operator()(i, j) * B(j);
+        }
+    }
 }

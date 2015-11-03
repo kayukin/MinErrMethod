@@ -3,6 +3,7 @@
 
 #include <stddef.h>
 #include <iosfwd>
+#include "Vector.h"
 
 class Matrix {
 protected:
@@ -32,9 +33,13 @@ public:
 
     double &operator()(size_t i, size_t j);
 
-    size_t getSize() const {
-        return size;
-    }
+    size_t getSize() const;
+
+    Matrix Invert();
+
+    Matrix Sopr();
+
+    Vector operator*(const Vector &B) const;
 
     double operator()(size_t i, size_t j) const;
 };

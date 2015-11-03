@@ -34,6 +34,4 @@ public:
     friend ostream &operator<<(ostream &os, const Vector &);
 };
 
-Vector operator*(Matrix A, Vector B);
-
 #endif //MINERRMETHOD_VECTOR_H

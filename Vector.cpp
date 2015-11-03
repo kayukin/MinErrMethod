@@ -58,20 +58,9 @@ size_t Vector::getSize() const {
     return size;
 }
 
-Vector operator*(Matrix A, Vector B) {
-    Vector result(A.getSize());
-    for (size_t i = 0; i < result.getSize(); i++) {
-        for (size_t j = 0; j < result.getSize(); j++) {
-            result(i) += A(i, j) * B(j);
-        }
-    }
-}
-
 double Vector::Norma() const {
     double norma = 0;
-    for (int i = 0; i < getSize(); i++) {
+    for (int i = 0; i < size; i++)
         norma += vector[i] * vector[i];
-    }
-    norma = pow(norma, 0.5);
-    return norma;
+    return sqrt(norma);
 }
