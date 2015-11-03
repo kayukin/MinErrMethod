@@ -1,6 +1,3 @@
-//
-// Created by kayukin on 03.11.15.
-//
 #ifndef MINERRMETHOD_MATRIX_H
 #define MINERRMETHOD_MATRIX_H
 

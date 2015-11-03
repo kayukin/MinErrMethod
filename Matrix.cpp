@@ -1,7 +1,3 @@
-//
-// Created by kayukin on 03.11.15.
-//
-
 #include <string.h>
 #include <ostream>
 #include "Matrix.h"
