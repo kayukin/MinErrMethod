@@ -37,10 +37,6 @@ public:
 
     size_t getSize() const;
 
-    Matrix Invert();
-
-    Matrix Sopr();
-
     double operator()(size_t i, size_t j) const;
 };
 

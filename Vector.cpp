@@ -31,7 +31,7 @@ Vector::~Vector() {
 }
 
 std::ostream &operator<<(std::ostream &os, const Vector &vector) {
-    for (int i = 0; i < vector.size; ++i) {
+    for (size_t i = 0; i < vector.size; ++i) {
         os << vector.vector[i] << ' ';
     }
     return os;
@@ -59,7 +59,7 @@ size_t Vector::getSize() const {
 
 double Vector::Norma() const {
     double norma = 0;
-    for (int i = 0; i < size; i++)
+    for (size_t i = 0; i < size; i++)
         norma += vector[i] * vector[i];
     return sqrt(norma);
 }

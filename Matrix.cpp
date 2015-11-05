@@ -97,19 +97,3 @@ double Matrix::operator()(size_t i, size_t j) const {
 size_t Matrix::getSize() const {
     return size;
 }
-
-Matrix Matrix::Sopr() {
-    Matrix B(size);
-    for (int i = 0; i < size - 1; i++)
-        B(0, i) = 1 / sqrt((i + 1) * (i + 2));
-    //B(0, i) = 1 / sqrt(size);
-    for (int i = 1; i < size - 1; i++) {
-        B(i, i - 1) = -sqrt(i) / sqrt(i + 1);
-        for (int j = i; j < size - 1; j++)
-            B(i, j) = 1 / sqrt((j + 1) * (j + 2));
-        //B(i, j) = 1 / sqrt(size);
-    }
-    B(size - 1, size - 2) = -1 / sqrt(size * (size - 1));
-    B(size - 1, size - 1) = 1 / sqrt(size);
-    return B;
-}
