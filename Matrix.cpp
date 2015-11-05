@@ -1,6 +1,3 @@
-#include <string.h>
-#include <ostream>
-#include <cmath>
 #include "Matrix.h"
 
 Matrix::Matrix(size_t N) {
@@ -26,6 +23,7 @@ Matrix &Matrix::operator=(const Matrix &matrix) {
     }
     Destroy();
     Copy(matrix);
+    return *this;
 }
 
 void Matrix::Destroy() {
@@ -100,20 +98,6 @@ size_t Matrix::getSize() const {
     return size;
 }
 
-Matrix Matrix::Invert() {
-    //void Mult_On_Inv_Matr_For_Sopr(int n,MyType**&p,MyType** B)
-    Vector d(size);
-    /*for (int i = 0; i < size; i++) {
-        for (int k = 0; k < size; k++) {
-            double x = 0;
-            for (int j = 0; j < size; j++) x = x + p[i][j] * B[k][j];
-            d[k] = MyType(x);
-        }
-        for (int j = 0; j < n; j++) p[i][j] = d[j];*/
-//}
-// delete[]d;
-}
-
 Matrix Matrix::Sopr() {
     Matrix B(size);
     for (int i = 0; i < size - 1; i++)
@@ -128,13 +112,4 @@ Matrix Matrix::Sopr() {
     B(size - 1, size - 2) = -1 / sqrt(size * (size - 1));
     B(size - 1, size - 1) = 1 / sqrt(size);
     return B;
-}
-
-Vector Matrix::operator*(const Vector &B) const {
-    Vector result(getSize());
-    for (size_t i = 0; i < result.getSize(); i++) {
-        for (size_t j = 0; j < result.getSize(); j++) {
-            result(i) += operator()(i, j) * B(j);
-        }
-    }
 }

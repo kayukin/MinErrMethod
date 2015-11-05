@@ -1,10 +1,9 @@
 #include <iostream>
-#include "Matrix.h"
-#include "Generator.h"
+#include "MinimalErrorsMethod.h"
 
 using namespace std;
 
 int main() {
-    Generator generator(3, 1, 5);
+    MinimalErrorsMethod::main();
     return 0;
 }

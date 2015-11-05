@@ -1,4 +1,3 @@
-#include <cmath>
 #include "Vector.h"
 
 Vector::Vector(size_t N) {
@@ -31,7 +30,7 @@ Vector::~Vector() {
     delete[] vector;
 }
 
-ostream &operator<<(ostream &os, const Vector &vector) {
+std::ostream &operator<<(std::ostream &os, const Vector &vector) {
     for (int i = 0; i < vector.size; ++i) {
         os << vector.vector[i] << ' ';
     }
@@ -63,4 +62,15 @@ double Vector::Norma() const {
     for (int i = 0; i < size; i++)
         norma += vector[i] * vector[i];
     return sqrt(norma);
+}
+
+
+Vector operator*(const Matrix& A, const Vector& B) {
+    Vector result(A.getSize());
+    for (size_t i = 0; i < result.getSize(); i++) {
+        for (size_t j = 0; j < result.getSize(); j++) {
+            result(i) += A(i, j) * B(j);
+        }
+    }
+    return result;
 }

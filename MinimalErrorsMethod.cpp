@@ -1,6 +1,5 @@
-#include <cmath>
 #include "MinimalErrorsMethod.h"
-#include "Generator.h"
+
 
 MinimalErrorsMethod::MinimalErrorsMethod() {
 
@@ -47,17 +46,14 @@ void MinimalErrorsMethod::main() {
     double max = 0;
     int n;
     int iter;
-    cout << "‚ўҐ¤ЁвҐ а §¬Ґа ¬ ваЁжл -> ";
-    //cin >> n;
     n = 10;
     Generator generator(n, min, max);
     Vector x(n);//вектор точного решения
     //вектор точных значений
     Matrix p = generator.getA();//исходная матрица
     Matrix B = p;//исходная матрица
-    //vector(n, x);//точный вектор
-    //Jordan_Form(n, p, min, max);
-    //cout << fabs(Obuslov(max, min)) << endl;
+    for (size_t i = 0; i < x.getSize(); i++)
+        x(i) = 1;
     double eps = 1e-5;
     //cin >> eps;
     B = p.Sopr();
@@ -78,4 +74,27 @@ void MinimalErrorsMethod::main() {
     cout << "===========================================" << endl;
     cout << "||  Ћв­.­Ґўп§Є   ||" << OTN_NEV(p, a, b) << "||" << endl;
     cout << "===========================================" << endl;
+}
+
+double ABS_ERROR(Vector vector1, Vector vector2) {
+    Vector v = vector1 - vector2;
+    double x = v.Norma();
+    return x;
+}
+
+double ABS_NEV(Matrix p, Vector v, Vector f) {
+    Vector v3 = p * v;
+    Vector v4 = v3 - f;
+    double x = v4.Norma();
+    return x;
+}
+
+double OTN_ERROR(Vector v1, Vector v2) {
+    double x = ABS_ERROR(v1, v2);
+    return x / v2.Norma();
+}
+
+double OTN_NEV(Matrix p, Vector v, Vector f) {
+    double x = ABS_NEV(p, v, f);
+    return x / f.Norma();
 }

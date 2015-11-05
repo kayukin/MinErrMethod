@@ -3,7 +3,9 @@
 
 #include <stddef.h>
 #include <iosfwd>
-#include "Vector.h"
+#include <string.h>
+#include <ostream>
+#include <cmath>
 
 class Matrix {
 protected:
@@ -38,8 +40,6 @@ public:
     Matrix Invert();
 
     Matrix Sopr();
-
-    Vector operator*(const Vector &B) const;
 
     double operator()(size_t i, size_t j) const;
 };

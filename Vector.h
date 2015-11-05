@@ -5,8 +5,9 @@
 #include <iostream>
 #include <string.h>
 #include "Matrix.h"
+#include <cmath>
 
-using namespace std;
+//using namespace std;
 
 class Vector {
 private:
@@ -31,7 +32,9 @@ public:
 
     double operator()(size_t i) const;
 
-    friend ostream &operator<<(ostream &os, const Vector &);
+    friend std::ostream &operator<<(std::ostream &os, const Vector &);
 };
+
+Vector operator*(const Matrix &, const Vector &);
 
 #endif //MINERRMETHOD_VECTOR_H
