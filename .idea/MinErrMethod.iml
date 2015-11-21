@@ -7,8 +7,8 @@
       <sourceFolder url="file://$MODULE_DIR$/Generator.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Matrix.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Matrix.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/MinimalErrorsMethod.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/MinimalErrorsMethod.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RichardsonMethod.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RichardsonMethod.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Vector.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Vector.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />

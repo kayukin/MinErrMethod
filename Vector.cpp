@@ -65,7 +65,7 @@ double Vector::Norma() const {
 }
 
 
-Vector operator*(const Matrix& A, const Vector& B) {
+Vector operator*(const Matrix &A, const Vector &B) {
     Vector result(A.getSize());
     for (size_t i = 0; i < result.getSize(); i++) {
         for (size_t j = 0; j < result.getSize(); j++) {
@@ -73,4 +73,12 @@ Vector operator*(const Matrix& A, const Vector& B) {
         }
     }
     return result;
+}
+
+Vector operator*(double d, const Vector &vector) {
+    Vector res(vector);
+    for (size_t i = 0; i < vector.getSize(); ++i) {
+        res(i) *= d;
+    }
+    return res;
 }

@@ -6,11 +6,10 @@
 #include <cmath>
 #include "Generator.h"
 
-class MinimalErrorsMethod {
+class RichardsonMethod {
 private:
 public:
-    MinimalErrorsMethod();
-    static int Solve(const Matrix &, Vector &, Vector &, double);
+    static Vector Solve(Matrix, Vector, double);
 };
 
 double ABS_ERROR(Vector vector1, Vector vector2);

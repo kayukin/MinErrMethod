@@ -38,60 +38,77 @@ void Generator::mygen(double **a, double **a_inv, int n, double alpha, double be
     int i, j, k;
     double *lambda = new double[n];
     double *sign = new double[n];
-    for (i = 0; i < n; i++) sign[i] = 1.;
+    for (i = 0; i < n; i++)
+        sign[i] = 1.;
     switch (sign_law) {
-        case -1:
-            for (i = 0; i < n; i++) sign[i] = -1.;
+        case 1:
+            for (i = 0; i < n; i++)
+                sign[i] = -1.;
             break;
         case 0:
             sign[0] = 1.;
-            for (i = 1; i < n; i++) sign[i] = -sign[i - 1];
+            for (i = 1; i < n; i++)
+                sign[i] = -sign[i - 1];
             break;
     }
     double *kappa = new double[n];
-    for (i = 0; i < n; i++) kappa[i] = (double) i / double(n - 1);
+    for (i = 0; i < n; i++)
+        kappa[i] = (double) i / double(n - 1);
     switch (lambda_law) {
         case 1:
-            for (i = 0; i < n; i++) kappa[i] = sqrt(kappa[i]);
+            for (i = 0; i < n; i++)
+                kappa[i] = sqrt(kappa[i]);
             break;
         case 2:
             double pi_half = acos(-1.) * 0.5;
-            for (i = 0; i < n; i++) kappa[i] = sin(pi_half * kappa[i]);
+            for (i = 0; i < n; i++)
+                kappa[i] = sin(pi_half * kappa[i]);
             break;
     }
     double *J = new double[n];
-    for (i = 0; i < n; i++) J[i] = sign[i] * ((1. - kappa[i]) * alpha + kappa[i] * beta);
+    for (i = 0; i < n; i++)
+        J[i] = sign[i] * ((1. - kappa[i]) * alpha + kappa[i] * beta);
     double *J_inv = new double[n];
-    for (i = 0; i < n; i++) J_inv[i] = 1. / J[i];
+    for (i = 0; i < n; i++)
+        J_inv[i] = 1. / J[i];
     double **Q = new double *[n];
-    for (i = 0; i < n; i++) Q[i] = new double[n];
+    for (i = 0; i < n; i++)
+        Q[i] = new double[n];
     double aa[3];
     switch (variant) {
         case 0:
             switch (schema) {
                 case 1:
                     Q_matrix(Q, n, schema);
-                    for (a[0][0] = 0., k = 0; k < n; k++) a[0][0] += Q[0][k] * J[k] * Q[0][k];
+                    for (a[0][0] = 0., k = 0; k < n; k++)
+                        a[0][0] += Q[0][k] * J[k] * Q[0][k];
                     for (j = 1; j < n; j++) {
-                        for (a[0][j] = 0., k = j - 1; k < n; k++) a[0][j] += Q[0][k] * J[k] * Q[j][k];
+                        for (a[0][j] = 0., k = j - 1; k < n; k++)
+                            a[0][j] += Q[0][k] * J[k] * Q[j][k];
                         a[j][0] = a[0][j];
                     }
                     for (i = 1; i < n; i++) {
-                        for (a[i][i] = 0., k = i - 1; k < n; k++) a[i][i] += Q[i][k] * J[k] * Q[i][k];
+                        for (a[i][i] = 0., k = i - 1; k < n; k++)
+                            a[i][i] += Q[i][k] * J[k] * Q[i][k];
                         for (j = i + 1; j < n; j++) {
-                            for (a[i][j] = 0., k = j - 1; k < n; k++) a[i][j] += Q[i][k] * J[k] * Q[j][k];
+                            for (a[i][j] = 0., k = j - 1; k < n; k++)
+                                a[i][j] += Q[i][k] * J[k] * Q[j][k];
                             a[j][i] = a[i][j];
                         }
                     }
-                    for (a_inv[0][0] = 0., k = 0; k < n; k++) a_inv[0][0] += Q[0][k] * J_inv[k] * Q[0][k];
+                    for (a_inv[0][0] = 0., k = 0; k < n; k++)
+                        a_inv[0][0] += Q[0][k] * J_inv[k] * Q[0][k];
                     for (j = 1; j < n; j++) {
-                        for (a_inv[0][j] = 0., k = j - 1; k < n; k++) a_inv[0][j] += Q[0][k] * J_inv[k] * Q[j][k];
+                        for (a_inv[0][j] = 0., k = j - 1; k < n; k++)
+                            a_inv[0][j] += Q[0][k] * J_inv[k] * Q[j][k];
                         a_inv[j][0] = a_inv[0][j];
                     }
                     for (i = 1; i < n; i++) {
-                        for (a_inv[i][i] = 0., k = i - 1; k < n; k++) a_inv[i][i] += Q[i][k] * J_inv[k] * Q[i][k];
+                        for (a_inv[i][i] = 0., k = i - 1; k < n; k++)
+                            a_inv[i][i] += Q[i][k] * J_inv[k] * Q[i][k];
                         for (j = i + 1; j < n; j++) {
-                            for (a_inv[i][j] = 0., k = j - 1; k < n; k++) a_inv[i][j] += Q[i][k] * J_inv[k] * Q[j][k];
+                            for (a_inv[i][j] = 0., k = j - 1; k < n; k++)
+                                a_inv[i][j] += Q[i][k] * J_inv[k] * Q[j][k];
                             a_inv[j][i] = a_inv[i][j];
                         }
                     }

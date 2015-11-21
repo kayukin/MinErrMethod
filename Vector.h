@@ -33,6 +33,8 @@ public:
     double operator()(size_t i) const;
 
     friend std::ostream &operator<<(std::ostream &os, const Vector &);
+
+    friend Vector operator*(double, const Vector&);
 };
 
 Vector operator*(const Matrix &, const Vector &);
